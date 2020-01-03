@@ -3,15 +3,23 @@
 #include <algorithm>
 using namespace std;
 
-void mergeVectors(vector<int> &v, vector<int>::iterator left, vector<int>::iterator mid, vector<int>::iterator right){
-    vector<int>::iterator i,j;
+void print(vector<int> &x){
+    vector<int>::iterator i;
+    for (i = x.begin(); i < x.end(); i++)
+        cout<<*i<<" ";
+    cout<<endl;
+}
 
+void mergeVectors(vector<int> &v, vector<int>::iterator mid){
+    vector<int>::iterator i,j;
     vector<int> L, R;
 
-    for (i = left; i < mid; i++)
+    for (i = v.begin(); i < mid; i++){
         L.push_back(*i);
-    for (j = mid; j < right; j++)
+    }
+    for (j = mid; j < v.end(); j++){
         R.push_back(*j);
+    }
 
     i = L.begin();
     j = R.begin();
@@ -45,11 +53,10 @@ void mergeVectors(vector<int> &v, vector<int>::iterator left, vector<int>::itera
 void mergeSort(vector<int> &v, vector<int>::iterator left, vector<int>::iterator right){
     if (left < right){
         vector<int>::iterator mid = left + (right - left)/2;
-
         mergeSort(v, left, mid);
         mergeSort(v, mid+1, right);
 
-        mergeVectors(v, left, mid, right);
+        mergeVectors(v, mid);
     }
 }
 
@@ -64,7 +71,6 @@ int main()
         x.push_back(aux);
     }
     mergeSort(x, x.begin(), x.end());
-    for (ptr = x.begin(); ptr < x.end(); ptr++)
-        cout << *ptr << " ";
+    print(x);
     return 0;
 }
