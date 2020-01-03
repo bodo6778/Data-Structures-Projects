@@ -1,0 +1,6 @@
+# depslib dependency file v1.0
+1578066591 source:/home/bogdan/development/C++/teme/ASD_tema5/randomizedQuickSort/main.cpp
+	<iostream>
+	<vector>
+	<cstdlib>
+
